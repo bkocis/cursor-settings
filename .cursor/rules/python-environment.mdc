@@ -1,0 +1,40 @@
+---
+description: Python virtual environment configuration - always use the project venv
+alwaysApply: true
+---
+
+# Python Virtual Environment Configuration
+
+## Virtual Environment Location
+- **Always use the virtual environment located at:** `<ENV_PATH>`
+- **Python interpreter path:** `<ENV_PATH>/bin/python`
+- **Pip path:** `<ENV_PATH>/bin/pip`
+
+## CRITICAL: Running Python Commands
+
+When executing ANY Python command or script, you MUST use one of these approaches:
+
+### Option 1: Use Full Path (RECOMMENDED)
+Always use the full path to the Python interpreter:
+```bash
+<ENV_PATH>/bin/python your_script.py
+<ENV_PATH>/bin/pip install package
+```
+
+### Option 2: Activate Venv First
+If you need to use `python` or `pip` directly, activate the venv in the same command:
+```bash
+source <ENV_PATH>/bin/activate && python your_script.py
+```
+
+## Terminal Command Rules
+
+- **NEVER** run `python` or `pip` without either:
+  1. Using the full path to the venv interpreter, OR
+  2. Activating the venv first in the same command
+- When using `run_terminal_cmd`, prefer using the full Python path to avoid shell activation issues
+- For multi-line commands or scripts, activate the venv at the start:
+  ```bash
+  source <ENV_PATH>/bin/activate && \
+  python your_script.py
+  ```
